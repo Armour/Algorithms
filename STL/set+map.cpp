@@ -8,7 +8,7 @@
 #include <string>
 
 // Black magic traversal for ANY container!
-#define tr(container, it) for (__typeof__(container.begin()) it = container.begin(); it != container.end(); it++)
+#define tr(container, it) for (__typeof__((container).begin()) it = (container).begin(); it != (container).end(); it++)
 
 using namespace std;
 
