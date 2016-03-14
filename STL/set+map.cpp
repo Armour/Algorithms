@@ -1,5 +1,5 @@
 /*********************************************************************
- * set and map are stored in red-black tree, iterate in ascend order *
+ * set and map are stored in red-black tree, iterated in ascend order *
  *********************************************************************/
 
 #include <iostream>
@@ -8,17 +8,16 @@
 #include <string>
 
 // Black magic traversal for ANY container!
-#define tr(container, it) for (__typeof__((container).begin()) it = (container).begin(); it != (container).end(); it++)
+#define tr(c, it) for (__typeof__((c).begin()) it = (c).begin(); it != (c).end(); it++)
 
 using namespace std;
 
+string str;
 set<int> s;
 map<string, int> m;
-string str;
-int n;
 
 int main() {
-    cin >> n;
+    int n = 100;
 
     for(int i = 1; i <= n; i++) {
         s.insert(i);    // Insert n elements

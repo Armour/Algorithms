@@ -25,7 +25,7 @@ void bfs(int x) {
     Q.push(x);
     flag[x] = 1;
     while (!Q.empty()) {
-        p = Q.front(); 
+        p = Q.front();
         Q.pop();
         printf("Visit: %d\n", p);
         for (i = 0; i < n; i++) {

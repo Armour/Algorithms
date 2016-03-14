@@ -14,8 +14,8 @@ bool comp(int i, int j) {
 }
 
 int main() {
-    reverse(v[2], v[6]);    // the range { 5, 7, 9, 11 } is now { 11, 9, 7, 5 };
-    reverse(a + 2, a + 6);  // the range { 5, 7, 9, 11 } is now { 11, 9, 7, 5 };
+    reverse(v.begin() + 2, v.begin() + 6);      // the range { 5, 7, 9, 11 } is now { 11, 9, 7, 5 };
+    reverse(a + 2, a + 6);                      // the range { 5, 7, 9, 11 } is now { 11, 9, 7, 5 };
 
     if (find(v.begin(), v.end(), 11) != v.end()) {
         // ...
@@ -23,6 +23,7 @@ int main() {
     if (find(a, a + ARRAY_SIZE, 11) != a + ARRAY_SIZE) {
         // ...
     }
+
     int i = find(v.begin(), v.end(), 11) - v.begin();
     if (i < (int)v.size()) {
         // ...
@@ -36,10 +37,11 @@ int main() {
     min(i1, i2);
     max(v1, v2);
     swap(v1, v2);
-    count(v.begin(), v.end(), 11);      // returns the number of occurrences of an element in a container or a part of a container
+    count(v.begin(), v.end(), 11);      // returns the number of occurrences of an element in a container
 
     sort(v.begin(), v.end(), comp);
-    sort(a, a + ARRAY_SIZE);
+    sort(a, a + ARRAY_SIZE, greater<int>());
+    sort(a, a + ARRAY_SIZE, [](int x, int y){return x > y;});
 
     // first initialize the order of v
     do {

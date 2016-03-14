@@ -13,14 +13,14 @@ int n, m;
 node *adj[MAXN];
 int flag[MAXN];
 
-int add_edge(int st, int ed) {
-    node *edge = (node *)malloc(sizeof(node)); 
+void add_edge(int st, int ed) {
+    node *edge = (node *)malloc(sizeof(node));
     edge->dest = ed;
     edge->next = adj[st];
     adj[st] = edge;
 }
 
-int init() {
+void init() {
     int i, st, ed;
     scanf("%d %d", &n, &m);
     for (i = 0; i < n; i++) {
@@ -33,8 +33,7 @@ int init() {
     memset(flag, 0, sizeof(flag));
 }
 
-int dfs(int x) {
-    int i;
+void dfs(int x) {
     node *p;
     printf("Visit: %d\n", x);
     flag[x] = 1;

@@ -24,12 +24,13 @@ void bfs(int x) {
     int r = 1;
     Q[r] = x;
     flag[x] = 1;
-    while (f < r) {
-        p = Q[++f]; 
+    while (f != r) {
+        p = Q[++f];
         printf("Visit: %d\n", p);
         for (i = 0; i < n; i++) {
             if (!flag[i] && map[p][i]) {
-                Q[++r] = i;
+                if (++r > MAX_QUEUE) r = 0;
+                Q[r] = i;
                 flag[i] = 1;
             }
         }
