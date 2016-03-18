@@ -1,56 +1,45 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-int n;
+// Constructor
 vector<int> v{1,2,3};
-vector<int> v1 = v;
-vector<int> v2(5, -1);
-vector<string> v3(3, "What!");
+vector<int> v = v1;
+vector<string> v(3, "What!");
 vector<vector<int>> v4(3, vector<int>(3, 100));
 
+// Size
+v.size();
+v.resize(100, 0);                  // Resize to 100, add new value with 0
+v.empty();
+
+// Access
+v.front();                          // Reference
+v.back();
+v.begin();                          // Pointer
+v.end();
+v[i];
+
+// Modifiers
+v.push_back(1);                                 // O(1)
+v.pop_back();                                   // O(1)
+v.insert(v.begin(), 0);                         // Below all is O(n)
+v.insert(v.begin(), v1.begin(), v1.end());      // Insert from vector
+v.insert(v.begin(), v1, v1 + 10);               // Insert from array
+v.erase(v.begin() + 3);                         // Remove the 4th element
+v.erase(v.begin(), v.begin() + 5);              // Remove from 1st to 6th elements
+v.assign(100, 0);                               // Assign 100 0's
+v.assign(v1.begin(), v1.end());                 // Assign from vector
+v.assign(v1, v1 + 10);                          // Assign from array
+v.clear();
+v.swap(v1);
+
+// Find
+find(v.begin(), v.end(), 1) != v.end();         // Find 1 in v
+
+// Function parameter
 void update(vector<string> &v) {
-    v[1] = "What?";
+    // ...
 }
 
 // Don't use the commented line below: (it will create a copy)
 // void print(vector<string> v) {
 void print(const vector<string> &v) {
-    for (auto x: v) {
-        cout << x;
-    }
-    cout << endl;
-}
-
-int main(void) {
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        int tmp;
-        cin >> tmp;
-        v.push_back(tmp);
-    }
-    cout << v.front() << endl;
-    cout << v.back() << endl;
-    v.insert(v.begin(), 42);    // Insert value 42 after the first
-
-    v1.resize(3);
-    if (!v1.empty())
-        cout << v1.size() << endl;
-
-    for (int x: v2) {
-        cout << x << endl;
-    }
-
-    update(v3);
-    print(v3);
-    cout << *(v3.begin() + 1) << endl;
-
-    int ans = 0;
-    for (vector<vector<int>>::iterator i = v4.begin(); i != v4.end(); i++) {
-        for (vector<int>::iterator j = i->begin(); j != i->end(); j++) {
-            ans += *j;
-        }
-    }
-    cout << ans << endl;
+    // ...
 }
