@@ -19,7 +19,7 @@ v[i];
 // Modifiers
 v.push_back(1);                                 // O(1)
 v.pop_back();                                   // O(1)
-v.insert(v.begin(), 0);                         // Below all is O(n)
+v.insert(v.begin(), 0);                         // Below are all O(n)
 v.insert(v.begin(), v1.begin(), v1.end());      // Insert from vector
 v.insert(v.begin(), v1, v1 + 10);               // Insert from array
 v.erase(v.begin() + 3);                         // Remove the 4th element

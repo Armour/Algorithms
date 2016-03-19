@@ -2,61 +2,35 @@
  * set and map are stored in red-black tree, iterated in ascend order *
  *********************************************************************/
 
-#include <iostream>
-#include <set>
-#include <map>      // most function is the same as set
-#include <string>
-
-// Black magic traversal for ANY container!
-#define tr(c, it) for (__typeof__((c).begin()) it = (c).begin(); it != (c).end(); it++)
-
-using namespace std;
-
-string str;
-set<int> s;
-map<string, int> m;
-
-int main() {
-    int n = 100;
-
-    for(int i = 1; i <= n; i++) {
-        s.insert(i);    // Insert n elements
-        cin >> str;
-        m.insert(make_pair(str, i));
+struct comp {
+    bool operator() (const int &lhs, const int &rhs) const {
+        return lhs < rhs;
     }
+};
 
-    s.insert(42);   // does nothing, 42 already exists in set
+// Constructor
+set<string> s(v1.begin(), v1.end());
+set<int, comp> s(s1);
 
-    for(int i = 2; i <= n; i += 2) {
-        s.erase(i);     // Erase even values
-    }
-    m.erase("the string that not exist");
+// Size
+s.size();
+s.empty();
 
-    s.size();   // will be 50
-    m.size();   // will be 100
+// Access
+s.begin();
+s.end();
 
-    int r = 0;   // Calculate the sum of elements in set
-    for (set<int>::iterator it = s.begin(); it != s.end(); it++) {
-        r += *it;
-    }
-    for (map<string, int>::iterator it = m.begin(); it != m.end(); it++) {
-        cout << it->first << endl;
-        cout << it->second << endl;
-    }
+// Modifiers
+s.insert("2333");
+s.erase(1, 10);                                 // Remove 10 elements from 2nd
+s.erase(s.begin() + 3);                         // Remove the 4th element
+s.erase(s.begin(), s.begin() + 5);              // Remove from 1st to 6th elements
+s.clear();
+s.swap(s1);
 
-    // Black magic here!
-    tr(s, it) {
-        cout << *it << endl;
-    }
-    tr(m, it) {
-        cout << it->first << endl;
-        cout << it->second << endl;
-    }
+// Find
+s.find("2333") != string::npos;                 // Below are all O(log n)
+s.lower_bound();                                // An iterator to the the first element in the container which is not considered to go before val
+s.upper_bound();                                // An iterator to the the first element in the container which is considered to go after val
 
-    if (s.find(42) != s.end()) {
-        // 42 presents in set
-    }
-    if (m.find(str) != m.end()) {
-        // str presents in set
-    }
-}
+// Map are pretty like set

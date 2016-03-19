@@ -26,7 +26,7 @@ s.pop_back();                                   // O(1)
 s.append(s1);
 s.append("23333");
 s.append(10, '.');
-s.insert(s.begin(), '*');                       // Below all is O(n)
+s.insert(s.begin(), '*');                       // Below are all O(n)
 s.insert(s.begin(), s1.begin(), s1.end());
 s.erase(1, 10);                                 // Remove 10 characters from 2nd
 s.erase(s.begin() + 3);                         // Remove the 4th element
