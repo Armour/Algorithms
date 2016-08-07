@@ -1,2 +1,2 @@
 # Algorithms
-Implements of Algorithms and Data Structures in C/C++/Python, also contains some codes as note like STL.
+This is my implements of many algorithms and data structures in C/C++/Python, also contains some notes like STL.
