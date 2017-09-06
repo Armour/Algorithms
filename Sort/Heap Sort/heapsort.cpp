@@ -1,27 +1,20 @@
+//
+// Created by Armour on 2017-09-05.
+//
+
+#include "heapsort.h"
+
 #include <iostream>
-#include <algorithm>
-#include <vector>
 
-using namespace std;
-
-int n;
-int a[2000];
-
-bool comp(const int &a, const int &b) {
-    return a > b;
+void HeapSort::sort() {
+    make_heap(num.begin(), num.end());
+    sort_heap(num.begin(), num.end());
 }
 
-int main(void) {
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    vector<int> s(a, a + n);
-    make_heap(s.begin(), s.end(), comp);
-    for (int i = 0; i < n; i++) {
-        cout << s.front() << " ";
-        pop_heap(s.begin(), s.end(), comp);
-        s.pop_back();
+void HeapSort::print() {
+    cout << "Heap sort result: ";
+    for (int i: num) {
+        cout << i << " ";
     }
     cout << endl;
 }

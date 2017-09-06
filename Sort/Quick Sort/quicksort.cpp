@@ -1,38 +1,41 @@
+//
+// Created by Armour on 2017-09-05.
+//
+
+#include "quicksort.h"
+
 #include <iostream>
-#include <vector>
 
-using namespace std;
-
-void quicksort(vector<int> &a, int l, int r) {
-    int i = l;
-    int j = r;
-    int mid = a[(i + j) / 2];
-    while (i <= j) {
-        while (i <= r && a[i] < mid) i++;
-        while (j >= l && a[j] > mid) j--;
-        if (i <= j) {
-            swap(a[i], a[j]);
-            i++;
-            j--;
-        }
-    }
-    if (l < j)
-        quicksort(a, l, j);
-    if (i < r)
-        quicksort(a, i, r);
+void QuickSort::sort() {
+    sort(num.begin(), num.end());
 }
 
+template <class T>
+void QuickSort::sort(T start, T end) {
+    if (start < end) {
+        // Find pivot index
+        int pivot = *(end - 1); // worst case O(n^2) if every time pivot is the maximum one
+        T i = start - 1;
+        T j = start;
+        while (j != end - 1) {
+            if (*j <= pivot) {
+                i++;
+                swap(*i, *j);
+            }
+            j++;
+        }
+        i++;
+        swap(*i, *j);
+        // Recursively sort
+        sort(start, i);
+        sort(i + 1, end);
+    }
+}
 
-int main() {
-    vector<int> V;
-    int n, elem;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> elem;
-        V.push_back(elem);
+void QuickSort::print() {
+    cout << "Quick sort result: ";
+    for (int i: num) {
+        cout << i << " ";
     }
-    quicksort(V, 0, V.size() - 1);
-    for (int i : V) {
-        cout << i << endl;
-    }
+    cout << endl;
 }

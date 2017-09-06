@@ -1,52 +1,29 @@
+//
+// Created by Armour on 2017-09-05.
+//
+
+#include "mergesort.h"
+
 #include <iostream>
-#include <vector>
 
-using namespace std;
-
-int merge(vector<int> &a, int l, int mid, int r) {
-    int count = 0;
-    int i = l;
-    int j = mid + 1;
-    vector<int> tmp;
-    while (i <= mid && j <= r) {
-        if (a[i] <= a[j]) {
-            tmp.push_back(a[i++]);
-        } else {
-            count += mid + 1 - i;
-            tmp.push_back(a[j++]);
-        }
-    }
-    while (i <= mid)
-        tmp.push_back(a[i++]);
-    while (j <= r)
-        tmp.push_back(a[j++]);
-    for (int i = l; i <= r; i++) {
-        a[i] = tmp[i - l];
-    }
-    return count;
+void MergeSort::sort(){
+    sort(num.begin(), num.end());
 }
 
-int mergesort(vector<int> &a, int l, int r) {
-    int mid = l + (r - l) / 2;
-    int count = 0;
-    if (l < r) {
-        count += mergesort(a, l, mid);
-        count += mergesort(a, mid + 1, r);
-        count += merge(a, l, mid, r);
+template <class T>
+void MergeSort::sort(T start, T end) {
+    if (end - start > 1) {
+        T mid = (end - start) / 2 + start;
+        sort(start, mid);
+        sort(mid, end);
+        inplace_merge(start, mid, end);
     }
-    return count;
 }
 
-int main() {
-    int n, tmp;
-    vector<int> V;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> tmp;
-        V.push_back(tmp);
+void MergeSort::print() {
+    cout << "Merge sort result: ";
+    for (int i: num) {
+        cout << i << " ";
     }
-    cout << mergesort(V, 0, V.size() - 1) << endl;
-    for (int i: V) {
-        cout << i << endl;
-    }
+    cout << endl;
 }
